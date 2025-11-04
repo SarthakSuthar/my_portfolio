@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:my_portfolio/app_widget.dart';
+import 'package:my_portfolio/theme.dart';
+
+class EducationPage extends StatelessWidget {
+  const EducationPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 1200),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "<education>",
+                style: TextStyle(color: AppColors.lightTextColor),
+              ),
+
+              Row(
+                children: [
+                  Text("Education ", style: AppTheme.titleText),
+                  gradientText("Background"),
+                ],
+              ),
+
+              Text(
+                "Building a strong foundation in computer science",
+                style: AppTheme.subtitleText,
+              ),
+
+              const SizedBox(height: 40),
+
+              AppContainerWidget(
+                context,
+                title: "Bachelor of Software Engineering",
+                supportiveTitle: "Parul University",
+                startDate: "2021",
+                endDate: "2025",
+                description:
+                    "Focused on full-stack development, algorithms, and database systems. Active member of the coding club.",
+                clipsItems: [""],
+                isEducation: true,
+              ),
+
+              const SizedBox(height: 20),
+
+              AppContainerWidget(
+                context,
+                title: "PCM",
+                supportiveTitle: "Jawahar Navodaya Vidayalaya",
+                startDate: "2019",
+                endDate: "2021",
+                description:
+                    "Focused on full-stack development, algorithms, and database systems. Active member of the coding club.",
+                clipsItems: [
+                  "Physics",
+                  "Chemistry",
+                  "Maths",
+                  "Computer Science",
+                ],
+                isEducation: true,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
