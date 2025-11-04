@@ -7,6 +7,8 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 700;
+
     return Stack(
       children: [
         Positioned.fill(
@@ -56,18 +58,27 @@ class AboutPage extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 60,
                       backgroundColor: AppColors.backgroundColor2,
-                      backgroundImage: AssetImage("man_avatar.png"),
+                      backgroundImage: AssetImage("my_profile_img.png"),
                     ),
                   ),
                   const SizedBox(height: 20),
                   appClips("Flutter Developer"),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Text("Hi, I'm ", style: AppTheme.titleText),
-                      gradientText("Sarthak Suthar"),
-                    ],
-                  ),
+                  if (isMobile)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Hi, I'm ", style: AppTheme.titleText),
+                        gradientText("Sarthak Suthar"),
+                      ],
+                    )
+                  else
+                    Row(
+                      children: [
+                        Text("Hi, I'm ", style: AppTheme.titleText),
+                        gradientText("Sarthak Suthar"),
+                      ],
+                    ),
                   const SizedBox(height: 10),
                   Text(
                     "Discription",

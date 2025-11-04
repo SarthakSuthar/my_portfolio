@@ -47,7 +47,11 @@ class NavBar extends StatelessWidget {
             : ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
         child: Container(
           padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(color: Colors.white.withOpacity(0.1)),
+          decoration: BoxDecoration(
+            color: activeSection == "About"
+                ? Colors.transparent
+                : Colors.white.withOpacity(0.1),
+          ),
           child: LayoutBuilder(
             builder: (context, constraints) {
               bool isMobile = constraints.maxWidth < 700;

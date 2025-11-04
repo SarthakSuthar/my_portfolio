@@ -7,6 +7,8 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 700;
+
     return Center(
       child: Container(
         constraints: BoxConstraints(maxWidth: 1200),
@@ -35,101 +37,228 @@ class ContactPage extends StatelessWidget {
 
               const SizedBox(height: 40),
 
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      contactBox(
-                        Icons.email_outlined,
-                        "Email",
-                        "sarthaksuthar2804@gmail.com",
-                      ),
-                      const SizedBox(height: 20),
-                      contactBox(
-                        Icons.phone_outlined,
-                        "Phone",
-                        "+91-91066 21689",
-                      ),
-                      const SizedBox(height: 20),
-                      contactBox(
-                        Icons.person_outline,
-                        "LinkedIn",
-                        "Sarthak Suthar",
-                      ),
-                    ],
-                  ),
-
-                  Container(
-                    width: 400,
-                    child: Column(
+              if (isMobile)
+                Column(
+                  children: [
+                    Column(
                       children: [
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Your Name",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                        ContactBox(
+                          Icons.email_outlined,
+                          "Email",
+                          "sarthaksuthar2804@gmail.com",
                         ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Your Email",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                        const SizedBox(height: 20),
+                        ContactBox(
+                          Icons.phone_outlined,
+                          "Phone",
+                          "+91-91066 21689",
                         ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Your Message",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                        const SizedBox(height: 20),
+                        ContactBox(
+                          Icons.person_outline,
+                          "LinkedIn",
+                          "Sarthak Suthar",
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
+
+                    const SizedBox(height: 20),
+
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(color: AppColors.dividerColor),
+                    //     borderRadius: BorderRadius.circular(10),
+                    //   ),
+                    //   width: 400,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(20.0),
+                    //     child: Column(
+                    //       children: [
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             hintText: "Your Name",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         const SizedBox(height: 20),
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             hintText: "Your Email",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         const SizedBox(height: 20),
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             hintText: "Your Message",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                )
+              else
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        ContactBox(
+                          Icons.email_outlined,
+                          "Email",
+                          "sarthaksuthar2804@gmail.com",
+                        ),
+                        const SizedBox(height: 20),
+                        ContactBox(
+                          Icons.phone_outlined,
+                          "Phone",
+                          "+91-91066 21689",
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        ContactBox(
+                          Icons.person_outline,
+                          "LinkedIn",
+                          "Sarthak Suthar",
+                        ),
+                        const SizedBox(height: 20),
+                        ContactBox(
+                          Icons.code,
+                          "Github",
+                          "github.com/SarthakSuthar",
+                        ),
+                      ],
+                    ),
+
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(color: AppColors.dividerColor),
+                    //     borderRadius: BorderRadius.circular(10),
+                    //   ),
+                    //   width: 400,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(20.0),
+                    //     child: Column(
+                    //       children: [
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             labelText: "Your Name",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         const SizedBox(height: 20),
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             labelText: "Your Email",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         const SizedBox(height: 20),
+                    //         TextField(
+                    //           decoration: InputDecoration(
+                    //             labelText: "Your Message",
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(10),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         Container(
+                    //           decoration: BoxDecoration(
+                    //             color: AppColors.lightTextColor,
+                    //             borderRadius: BorderRadius.circular(10),
+                    //           ),
+                    //           child: Text("Send Message"),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
+
+              SizedBox(height: isMobile ? 40 : 60),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Widget contactBox(IconData icon, String text, String url) {
+class ContactBox extends StatefulWidget {
+  final IconData icon;
+  final String text;
+  final String url;
+  const ContactBox(this.icon, this.text, this.url, {super.key});
+
+  @override
+  State<ContactBox> createState() => _ContactBoxState();
+}
+
+class _ContactBoxState extends State<ContactBox> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
     return InkWell(
+      onHover: (value) {
+        setState(() {
+          _isHovered = value;
+        });
+      },
       onTap: () {},
       borderRadius: BorderRadius.circular(10),
       child: Container(
+        constraints: BoxConstraints(maxWidth: 400),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.backgroundColor2,
+          border: Border.all(
+            color: _isHovered
+                ? AppColors.clipFillColor
+                : AppColors.lightTextColor,
+            width: _isHovered ? 2 : 1,
+          ),
           borderRadius: BorderRadius.circular(10),
           boxShadow: [],
         ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.clipFillColor,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppColors.lightTextColor),
+        child: Expanded(
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.clipFillColor,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppColors.lightTextColor),
+                ),
+                child: Icon(widget.icon, color: AppColors.lightTextColor),
               ),
-              child: Icon(icon, color: AppColors.lightTextColor),
-            ),
-            const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(text, style: AppTheme.subtitleText),
-                Text(url, style: AppTheme.bodyText),
-              ],
-            ),
-          ],
+              const SizedBox(width: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.text, style: AppTheme.subtitleText),
+                  Text(widget.url, style: AppTheme.bodyText),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
