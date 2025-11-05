@@ -37,20 +37,24 @@ class NavBar extends StatelessWidget {
     }
   }
 
-  //TODO: if about page --> remove blure or any color else blur
   @override
   Widget build(BuildContext context) {
     return ClipRect(
       child: BackdropFilter(
         filter: activeSection == "About"
-            ? ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0)
-            : ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+            ? ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0)
+            : ImageFilter.blur(
+                sigmaX: 30.0,
+                sigmaY: 30.0,
+                tileMode: TileMode.clamp,
+              ),
         child: Container(
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: activeSection == "About"
-                ? Colors.transparent
-                : Colors.white.withOpacity(0.1),
+            // color: activeSection == "About"
+            //     ? Colors.transparent
+            //     : AppColors.cardColor.withOpacity(0.15),
+            // color: Colors.grey.withOpacity(0.1),
           ),
           child: LayoutBuilder(
             builder: (context, constraints) {

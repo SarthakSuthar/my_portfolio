@@ -59,51 +59,16 @@ class ContactPage extends StatelessWidget {
                           "LinkedIn",
                           "Sarthak Suthar",
                         ),
+                        const SizedBox(height: 20),
+                        ContactBox(
+                          Icons.code,
+                          "Github",
+                          "github.com/SarthakSuthar",
+                        ),
                       ],
                     ),
 
                     const SizedBox(height: 20),
-
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(color: AppColors.dividerColor),
-                    //     borderRadius: BorderRadius.circular(10),
-                    //   ),
-                    //   width: 400,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(20.0),
-                    //     child: Column(
-                    //       children: [
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             hintText: "Your Name",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const SizedBox(height: 20),
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             hintText: "Your Email",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const SizedBox(height: 20),
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             hintText: "Your Message",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 )
               else
@@ -140,54 +105,6 @@ class ContactPage extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(color: AppColors.dividerColor),
-                    //     borderRadius: BorderRadius.circular(10),
-                    //   ),
-                    //   width: 400,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(20.0),
-                    //     child: Column(
-                    //       children: [
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             labelText: "Your Name",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const SizedBox(height: 20),
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             labelText: "Your Email",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const SizedBox(height: 20),
-                    //         TextField(
-                    //           decoration: InputDecoration(
-                    //             labelText: "Your Message",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         Container(
-                    //           decoration: BoxDecoration(
-                    //             color: AppColors.lightTextColor,
-                    //             borderRadius: BorderRadius.circular(10),
-                    //           ),
-                    //           child: Text("Send Message"),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
 
@@ -237,28 +154,28 @@ class _ContactBoxState extends State<ContactBox> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [],
         ),
-        child: Expanded(
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: AppColors.clipFillColor,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColors.lightTextColor),
-                ),
-                child: Icon(widget.icon, color: AppColors.lightTextColor),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.clipFillColor,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: AppColors.lightTextColor),
               ),
-              const SizedBox(width: 16),
-              Column(
+              child: Icon(widget.icon, color: AppColors.lightTextColor),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.text, style: AppTheme.subtitleText),
                   Text(widget.url, style: AppTheme.bodyText),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

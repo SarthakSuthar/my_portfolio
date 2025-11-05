@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/app_widget.dart';
 import 'package:my_portfolio/theme.dart';
+import 'package:my_portfolio/main.dart'; // Import main.dart to access MyHomePageState
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -81,7 +82,7 @@ class AboutPage extends StatelessWidget {
                     ),
                   const SizedBox(height: 10),
                   Text(
-                    "Discription",
+                    "A passionate mobile application developer having experience in building cross-platform applications using Flutter and Dart.",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 20,
@@ -89,12 +90,73 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  if (isMobile)
+                    Column(
+                      children: [
+                        viewMyWorkBtn(context),
+                        const SizedBox(height: 10),
+                        getInTouchBtn(),
+                      ],
+                    )
+                  else
+                    Row(
+                      children: [
+                        viewMyWorkBtn(context),
+                        const SizedBox(width: 10),
+                        getInTouchBtn(),
+                      ],
+                    ),
                 ],
               ),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget viewMyWorkBtn(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // TODO: working here
+        // Access the MyHomePageState and call _scrollToSection for Projects
+        // (context as Element)
+        //     .findAncestorStateOfType<MyHomePageState>()
+        //     ?._scrollToSection(
+        //       (context as Element)
+        //           .findAncestorStateOfType<MyHomePageState>()!
+        //           .projectKey,
+        //       "Projects",
+        //     );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF24C76D), Color(0xFF27D9B5)],
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text("View My Work"),
+        ),
+      ),
+    );
+  }
+
+  Widget getInTouchBtn() {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.cardColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text("Get In Touch", style: AppTheme.bodyText),
+        ),
+      ),
     );
   }
 }
