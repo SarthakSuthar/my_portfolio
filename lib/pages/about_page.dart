@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/app_widget.dart';
 import 'package:my_portfolio/theme.dart';
-import 'package:my_portfolio/main.dart'; // Import main.dart to access MyHomePageState
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
+  const AboutPage({
+    super.key,
+    required this.projectPageKey,
+    required this.contactPageKey,
+  });
+  final GlobalKey projectPageKey;
+  final GlobalKey contactPageKey;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class AboutPage extends StatelessWidget {
           child: Container(
             constraints: BoxConstraints(
               minHeight: MediaQuery.of(context).size.height,
-              maxWidth: 1200,
+              maxWidth: 1000,
             ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -93,17 +98,17 @@ class AboutPage extends StatelessWidget {
                   if (isMobile)
                     Column(
                       children: [
-                        viewMyWorkBtn(context),
+                        viewMyWorkBtn(projectPageKey),
                         const SizedBox(height: 10),
-                        getInTouchBtn(),
+                        getInTouchBtn(contactPageKey),
                       ],
                     )
                   else
                     Row(
                       children: [
-                        viewMyWorkBtn(context),
+                        viewMyWorkBtn(projectPageKey),
                         const SizedBox(width: 10),
-                        getInTouchBtn(),
+                        getInTouchBtn(contactPageKey),
                       ],
                     ),
                 ],
@@ -115,19 +120,14 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  Widget viewMyWorkBtn(BuildContext context) {
+  Widget viewMyWorkBtn(GlobalKey pageKey) {
     return InkWell(
       onTap: () {
-        // TODO: working here
-        // Access the MyHomePageState and call _scrollToSection for Projects
-        // (context as Element)
-        //     .findAncestorStateOfType<MyHomePageState>()
-        //     ?._scrollToSection(
-        //       (context as Element)
-        //           .findAncestorStateOfType<MyHomePageState>()!
-        //           .projectKey,
-        //       "Projects",
-        //     );
+        Scrollable.ensureVisible(
+          projectPageKey.currentContext!,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -144,9 +144,15 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  Widget getInTouchBtn() {
+  Widget getInTouchBtn(GlobalKey contactPageKey) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Scrollable.ensureVisible(
+          contactPageKey.currentContext!,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      },
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.cardColor,

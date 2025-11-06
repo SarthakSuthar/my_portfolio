@@ -127,7 +127,11 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AboutPage(key: aboutKey),
+                AboutPage(
+                  key: aboutKey,
+                  projectPageKey: projectKey,
+                  contactPageKey: contactKey,
+                ),
                 ExperiencePage(key: experienceKey),
                 EducationPage(key: educationKey),
                 ProjectPage(key: projectKey),

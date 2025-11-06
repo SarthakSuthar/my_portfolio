@@ -11,7 +11,7 @@ class ExperiencePage extends StatelessWidget {
       child: Container(
         constraints: BoxConstraints(
           // minHeight: MediaQuery.of(context).size.height,
-          maxWidth: 1200,
+          maxWidth: 1000,
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),

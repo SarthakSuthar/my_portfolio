@@ -9,7 +9,7 @@ class EducationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        constraints: BoxConstraints(maxWidth: 1200),
+        constraints: BoxConstraints(maxWidth: 1000),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
