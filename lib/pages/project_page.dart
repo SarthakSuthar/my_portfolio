@@ -11,60 +11,54 @@ class ProjectPage extends StatelessWidget {
     // Create this as a global variable or inside your ProjectPage class
     final List<Project> projects = [
       Project(
-        title: "E-Commerce Mobile App",
+        title: "Customer Relationship Management",
         description:
-            "A full-featured e-commerce application with cart management, payment integration, and user authentication built using Flutter.",
+            "It is a web and mobile (cross-platform) application, designed for employees to maintain track records.",
+        longDescription:
+            "I have created a mobile and web app to maintain customer relationship records. I uses Flutter for crossplatform support. I used Firebase aas my primary database (as it is offline first app) and auth provider. for state management and routing I used Getx.",
         imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "Firebase", "Stripe", "Provider"],
-        githubUrl: "https://github.com/yourusername/ecommerce-app",
-        liveUrl: null,
+        techStack: ["Flutter", "Firebase", "SQLite", "GetX"],
+        githubUrl: "https://github.com/SarthakSuthar/uniqtech_crm",
+        liveUrl: "http://uniqtech-001-site10.ntempurl.com/#/login",
       ),
       Project(
-        title: "Weather Forecast App",
-        description:
-            "Real-time weather application with 7-day forecasts, location-based weather updates, and beautiful animated UI.",
+        title: "Portfolio Website",
+        description: "Web page created to showcase my own work and skills.",
+        longDescription:
+            "I have created this entire portfolio in Flutter only and deployed it on Github page. (So this is the live demo itself 😁)",
         imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "REST API", "Bloc", "Geolocator"],
-        githubUrl: "https://github.com/yourusername/weather-app",
+        techStack: ["Flutter", "Github web pages"],
+        githubUrl: "https://github.com/SarthakSuthar/my_portfolio",
         liveUrl: "https://yourweatherapp.com",
       ),
       Project(
-        title: "Task Management Dashboard",
-        description:
-            "Productivity app with task tracking, project management, team collaboration features, and real-time synchronization.",
-        imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "Firebase", "GetX", "Hive"],
-        githubUrl: "https://github.com/yourusername/task-manager",
-        liveUrl: null,
-      ),
-      Project(
-        title: "Social Media App",
-        description:
-            "Modern social networking platform with real-time messaging, media sharing, and content moderation.",
+        title: "Employee Self Service",
+        description: "An HRMS ESS mobile app to digitalize manual HR tasks.",
         longDescription:
-            "A full-featured social media application built with React Native. Includes user profiles, post creation with image/video support, real-time messaging system, news feed with infinite scroll, like and comment functionality, content moderation tools, push notifications, and social sharing capabilities.",
+            "Worked on a HRMS ESS mobile application to deliver seamlesss user experience. I consisted modules like attendance, leav e management, finance, bookings and ticket generation, all with the multilevel approval system.",
         imagePath: "assets/my_profile_img.png",
-        techStack: ["React Native", "GraphQL", "AWS", "Redis"],
-        githubUrl: "https://github.com/yourusername/social-media-app",
-        liveUrl: "https://yoursocialmediaapp.com/download",
+        techStack: [
+          "Flutter",
+          "FCM",
+          "REST API",
+          "BLoC",
+          "Provider",
+          "Shared-Preferences",
+        ],
+        githubUrl: null,
+        liveUrl:
+            "https://play.google.com/store/apps/details?id=com.dhyey.mitconess&pcampaignid=web_share",
       ),
       Project(
-        title: "Fitness Tracker",
-        description:
-            "Health and fitness app with workout tracking, calorie counting, progress charts, and personalized workout plans.",
+        title: "Dicabs CRM",
+        description: "CRM application with real time location tracking.",
+        longDescription:
+            "In this project I specifically worked on tracking location feature. In this I have implemented robust real-time location tracking of employee device to check employee activities.",
         imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "SQLite", "Charts", "Sensors"],
-        githubUrl: "https://github.com/yourusername/fitness-tracker",
-        liveUrl: "https://yourfitnessapp.com",
-      ),
-      Project(
-        title: "Restaurant Booking App",
-        description:
-            "Reservation system with table booking, menu browsing, order placement, and real-time availability updates.",
-        imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "Node.js", "MongoDB", "Google Maps"],
-        githubUrl: "https://github.com/yourusername/restaurant-booking",
-        liveUrl: null,
+        techStack: ["Flutter", "REST API", "GetX", "Geo-Location"],
+        githubUrl: null,
+        liveUrl:
+            "https://play.google.com/store/apps/details?id=com.uniqtech.dicabs&pcampaignid=web_share",
       ),
     ];
 
@@ -251,13 +245,13 @@ class _ProjectCardState extends State<ProjectCard> {
                         builder: (BuildContext context) {
                           return ProjectDetailsPopUp(
                             project: Project(
-                              title: "title",
-                              description: "description",
-                              imagePath: "imagePath",
-                              longDescription: "longDescription",
-                              techStack: ["techStack"],
-                              githubUrl: "githubUrl",
-                              liveUrl: "liveUrl",
+                              title: widget.title,
+                              description: widget.description,
+                              imagePath: widget.imagePath,
+                              longDescription: widget.longDescription,
+                              techStack: widget.techStack,
+                              githubUrl: widget.githubUrl,
+                              liveUrl: widget.liveUrl,
                             ),
                           );
                         },
