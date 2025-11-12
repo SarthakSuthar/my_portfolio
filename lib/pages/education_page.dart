@@ -42,8 +42,8 @@ class EducationPage extends StatelessWidget {
                 startDate: "2021",
                 endDate: "2025",
                 description:
-                    "Focused on full-stack development, algorithms, and database systems. Active member of the coding club.",
-                clipsItems: [""],
+                    "Focused on software development, algorithms, and database systems. ",
+                clipsItems: ["programming", "database", "Software Development"],
                 isEducation: true,
               ),
 
@@ -56,7 +56,7 @@ class EducationPage extends StatelessWidget {
                 startDate: "2019",
                 endDate: "2021",
                 description:
-                    "Focused on full-stack development, algorithms, and database systems. Active member of the coding club.",
+                    "Learned fundaments in core subjects and python in computer science subject",
                 clipsItems: [
                   "Physics",
                   "Chemistry",

@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/app_widget.dart';
 import 'package:my_portfolio/theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
@@ -43,27 +45,32 @@ class ContactPage extends StatelessWidget {
                     Column(
                       children: [
                         ContactBox(
-                          Icons.email_outlined,
-                          "Email",
-                          "sarthaksuthar2804@gmail.com",
+                          icon: Icons.email_outlined,
+                          text: "Email",
+                          url: "sarthaksuthar2804@gmail.com",
+                          userName: "sarthaksuthar2804@gmail.com",
                         ),
                         const SizedBox(height: 20),
                         ContactBox(
-                          Icons.phone_outlined,
-                          "Phone",
-                          "+91-91066 21689",
+                          icon: Icons.phone_outlined,
+                          text: "Phone",
+                          userName: "+91-91066 21689",
+                          url: "+91-91066 21689",
                         ),
                         const SizedBox(height: 20),
                         ContactBox(
-                          Icons.person_outline,
-                          "LinkedIn",
-                          "Sarthak Suthar",
+                          icon: Icons.person_outline,
+                          text: "LinkedIn",
+                          userName: "Sarthak Suthar",
+                          url:
+                              "https://www.linkedin.com/in/sarthak-suthar-33555b222/",
                         ),
                         const SizedBox(height: 20),
                         ContactBox(
-                          Icons.code,
-                          "Github",
-                          "github.com/SarthakSuthar",
+                          icon: Icons.code,
+                          text: "Github",
+                          userName: "github.com/SarthakSuthar",
+                          url: "https://github.com/SarthakSuthar",
                         ),
                       ],
                     ),
@@ -78,30 +85,35 @@ class ContactPage extends StatelessWidget {
                     Column(
                       children: [
                         ContactBox(
-                          Icons.email_outlined,
-                          "Email",
-                          "sarthaksuthar2804@gmail.com",
+                          icon: Icons.email_outlined,
+                          text: "Email",
+                          url: "sarthaksuthar2804@gmail.com",
+                          userName: "sarthaksuthar2804@gmail.com",
                         ),
                         const SizedBox(height: 20),
                         ContactBox(
-                          Icons.phone_outlined,
-                          "Phone",
-                          "+91-91066 21689",
+                          icon: Icons.phone_outlined,
+                          text: "Phone",
+                          userName: "+91-91066 21689",
+                          url: "+91-91066 21689",
                         ),
                       ],
                     ),
                     Column(
                       children: [
                         ContactBox(
-                          Icons.person_outline,
-                          "LinkedIn",
-                          "Sarthak Suthar",
+                          icon: Icons.person_outline,
+                          text: "LinkedIn",
+                          userName: "Sarthak Suthar",
+                          url:
+                              "https://www.linkedin.com/in/sarthak-suthar-33555b222/",
                         ),
                         const SizedBox(height: 20),
                         ContactBox(
-                          Icons.code,
-                          "Github",
-                          "github.com/SarthakSuthar",
+                          icon: Icons.code,
+                          text: "Github",
+                          userName: "github.com/SarthakSuthar",
+                          url: "https://github.com/SarthakSuthar",
                         ),
                       ],
                     ),
@@ -120,8 +132,15 @@ class ContactPage extends StatelessWidget {
 class ContactBox extends StatefulWidget {
   final IconData icon;
   final String text;
+  final String userName;
   final String url;
-  const ContactBox(this.icon, this.text, this.url, {super.key});
+  const ContactBox({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.url,
+    required this.userName,
+  });
 
   @override
   State<ContactBox> createState() => _ContactBoxState();
@@ -138,7 +157,34 @@ class _ContactBoxState extends State<ContactBox> {
           _isHovered = value;
         });
       },
-      onTap: () {},
+      onTap: () {
+        if (widget.text == "Email") {
+          // launchUrl(
+          //   Uri.parse("mailto:${widget.url}"),
+          //   mode: LaunchMode.externalApplication,
+          // );
+          if (kIsWeb) {
+            launchUrl(
+              Uri.parse(
+                'https://mail.google.com/mail/?view=cm&fs=1&to=${widget.url}',
+              ),
+              mode: LaunchMode.externalApplication,
+            );
+          } else {
+            launchUrl(
+              Uri.parse('mailto:${widget.url}'),
+              mode: LaunchMode.externalApplication,
+            );
+          }
+        } else if (widget.text == "Phone") {
+          launchUrl(
+            Uri.parse("tel:${widget.url}"),
+            mode: LaunchMode.externalApplication,
+          );
+        } else {
+          launchUrl(Uri.parse(widget.url));
+        }
+      },
       borderRadius: BorderRadius.circular(10),
       child: Container(
         constraints: BoxConstraints(maxWidth: 400),
@@ -171,7 +217,7 @@ class _ContactBoxState extends State<ContactBox> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.text, style: AppTheme.subtitleText),
-                  Text(widget.url, style: AppTheme.bodyText),
+                  Text(widget.userName, style: AppTheme.bodyText),
                 ],
               ),
             ),

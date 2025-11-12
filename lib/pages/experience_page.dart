@@ -44,8 +44,16 @@ class ExperiencePage extends StatelessWidget {
                 supportiveTitle: "Uniqtech Solutions",
                 startDate: "April 2025",
                 endDate: "Present",
-                description: "Lorem ipsum dolor sit amet",
-                clipsItems: ["Flutter", "Dart", "Firebase", "UI/UX"],
+                description:
+                    "I have worked on many different project and accquired real world experience through different projects. Here my day-to-day tasks involved development, and meeting with clients to understand the requirements.",
+                clipsItems: [
+                  "Bloc",
+                  "State Management",
+                  "GetX",
+                  "Responsive Web App",
+                  "Firebase",
+                  "Local Database",
+                ],
               ),
 
               const SizedBox(height: 20),
@@ -55,9 +63,10 @@ class ExperiencePage extends StatelessWidget {
                 title: "Flutter Developer - Intern",
                 supportiveTitle: "Uniqtech Solutions",
                 startDate: "Nov 2024",
-                endDate: "April 2025",
-                description: "Lorem ipsum dolor sit amet",
-                clipsItems: ["Flutter", "Dart", "Firebase", "UI/UX"],
+                endDate: "March 2025",
+                description:
+                    "Started my professional carrear here and worked with Flutter on real world project.",
+                clipsItems: ["Flutter", "Dart", "Android", "UI/UX", "REST API"],
               ),
             ],
           ),

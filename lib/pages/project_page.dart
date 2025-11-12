@@ -11,32 +11,11 @@ class ProjectPage extends StatelessWidget {
     // Create this as a global variable or inside your ProjectPage class
     final List<Project> projects = [
       Project(
-        title: "Customer Relationship Management",
-        description:
-            "It is a web and mobile (cross-platform) application, designed for employees to maintain track records.",
-        longDescription:
-            "I have created a mobile and web app to maintain customer relationship records. I uses Flutter for crossplatform support. I used Firebase aas my primary database (as it is offline first app) and auth provider. for state management and routing I used Getx.",
-        imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "Firebase", "SQLite", "GetX"],
-        githubUrl: "https://github.com/SarthakSuthar/uniqtech_crm",
-        liveUrl: "http://uniqtech-001-site10.ntempurl.com/#/login",
-      ),
-      Project(
-        title: "Portfolio Website",
-        description: "Web page created to showcase my own work and skills.",
-        longDescription:
-            "I have created this entire portfolio in Flutter only and deployed it on Github page. (So this is the live demo itself 😁)",
-        imagePath: "assets/my_profile_img.png",
-        techStack: ["Flutter", "Github web pages"],
-        githubUrl: "https://github.com/SarthakSuthar/my_portfolio",
-        liveUrl: "https://yourweatherapp.com",
-      ),
-      Project(
         title: "Employee Self Service",
         description: "An HRMS ESS mobile app to digitalize manual HR tasks.",
         longDescription:
             "Worked on a HRMS ESS mobile application to deliver seamlesss user experience. I consisted modules like attendance, leav e management, finance, bookings and ticket generation, all with the multilevel approval system.",
-        imagePath: "assets/my_profile_img.png",
+        imagePath: "assets/ess.png",
         techStack: [
           "Flutter",
           "FCM",
@@ -54,11 +33,32 @@ class ProjectPage extends StatelessWidget {
         description: "CRM application with real time location tracking.",
         longDescription:
             "In this project I specifically worked on tracking location feature. In this I have implemented robust real-time location tracking of employee device to check employee activities.",
-        imagePath: "assets/my_profile_img.png",
+        imagePath: "assets/dicabs_crm.png",
         techStack: ["Flutter", "REST API", "GetX", "Geo-Location"],
         githubUrl: null,
         liveUrl:
             "https://play.google.com/store/apps/details?id=com.uniqtech.dicabs&pcampaignid=web_share",
+      ),
+      Project(
+        title: "Customer Relationship Management",
+        description:
+            "It is a web and mobile (cross-platform) application, designed for employees to maintain track records.",
+        longDescription:
+            "I have created a mobile and web app to maintain customer relationship records. I uses Flutter for crossplatform support. I used Firebase aas my primary database (as it is offline first app) and auth provider. for state management and routing I used Getx.",
+        imagePath: "crm.png",
+        techStack: ["Flutter", "Firebase", "SQLite", "GetX"],
+        githubUrl: "https://github.com/SarthakSuthar/uniqtech_crm",
+        liveUrl: "http://uniqtech-001-site10.ntempurl.com/#/login",
+      ),
+      Project(
+        title: "Portfolio Website",
+        description: "Web page created to showcase my own work and skills.",
+        longDescription:
+            "I have created this entire portfolio in Flutter only and deployed it on Github page. (So this is the live demo itself 😁)",
+        imagePath: "portfolio.png",
+        techStack: ["Flutter", "Github web pages"],
+        githubUrl: "https://github.com/SarthakSuthar/my_portfolio",
+        liveUrl: null,
       ),
     ];
 
