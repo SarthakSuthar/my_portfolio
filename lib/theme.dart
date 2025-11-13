@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -17,12 +15,14 @@ class AppColors {
 class AppTheme {
   static TextStyle titleText = TextStyle(
     fontSize: 40,
+    // fontSize: 15.sp,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
 
   static TextStyle titleGreenText = TextStyle(
     fontSize: 40,
+    // fontSize: 15.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.lightTextColor,
   );

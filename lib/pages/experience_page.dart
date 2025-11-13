@@ -7,6 +7,7 @@ class ExperiencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 700;
     return Center(
       child: Container(
         constraints: BoxConstraints(
@@ -24,12 +25,21 @@ class ExperiencePage extends StatelessWidget {
                 style: TextStyle(color: AppColors.lightTextColor),
               ),
 
-              Row(
-                children: [
-                  Text("Professional ", style: AppTheme.titleText),
-                  gradientText("Experience"),
-                ],
-              ),
+              if (isMobile)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Professional ", style: AppTheme.titleText),
+                    gradientText("Experience"),
+                  ],
+                )
+              else
+                Row(
+                  children: [
+                    Text("Professional ", style: AppTheme.titleText),
+                    gradientText("Experience"),
+                  ],
+                ),
 
               Text(
                 "Building impactful solutions across diverse industries",

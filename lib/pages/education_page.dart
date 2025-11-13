@@ -7,6 +7,7 @@ class EducationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 700;
     return Center(
       child: Container(
         constraints: BoxConstraints(maxWidth: 1000),
@@ -21,12 +22,21 @@ class EducationPage extends StatelessWidget {
                 style: TextStyle(color: AppColors.lightTextColor),
               ),
 
-              Row(
-                children: [
-                  Text("Education ", style: AppTheme.titleText),
-                  gradientText("Background"),
-                ],
-              ),
+              if (isMobile)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Education ", style: AppTheme.titleText),
+                    gradientText("Background"),
+                  ],
+                )
+              else
+                Row(
+                  children: [
+                    Text("Education ", style: AppTheme.titleText),
+                    gradientText("Background"),
+                  ],
+                ),
 
               Text(
                 "Building a strong foundation in computer science",

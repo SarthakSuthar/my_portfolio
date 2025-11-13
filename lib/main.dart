@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/nav_bar.dart';
 import 'package:my_portfolio/pages/about_page.dart';
 import 'package:my_portfolio/pages/contact_page.dart';
@@ -8,7 +9,13 @@ import 'package:my_portfolio/pages/project_page.dart';
 import 'package:my_portfolio/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ScreenUtilInit(
+      designSize: Size(390, 844),
+      builder: (_, child) => child!, // Remove MaterialApp from here
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -65,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final scrollPosition = _scrollController.offset;
 
     // Get positions of each section
-    final aboutPosition = _getWidgetPosition(aboutKey);
+    // final aboutPosition = _getWidgetPosition(aboutKey);
     final experiencePosition = _getWidgetPosition(experienceKey);
     final educationPosition = _getWidgetPosition(educationKey);
     final projectPosition = _getWidgetPosition(projectKey);

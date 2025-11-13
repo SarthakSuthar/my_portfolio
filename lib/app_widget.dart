@@ -31,6 +31,25 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Define breakpoints
+    bool isMobile = screenWidth < 600;
+    bool isTablet = screenWidth >= 600 && screenWidth < 1024;
+    // bool isDesktop = screenWidth >= 1024;
+
+    // Responsive values
+    double horizontalPadding = isMobile ? 12 : (isTablet ? 16 : 20);
+    double verticalPadding = isMobile ? 20 : (isTablet ? 24 : 26);
+    double borderRadius = isMobile ? 8 : 10;
+    double stripWidth = _isHovered ? (isMobile ? 5 : 6) : (isMobile ? 4 : 5);
+    double iconSize = isMobile ? 16 : 18;
+    double dateIconSize = isMobile ? 12 : 14;
+    double spacing = isMobile ? 12 : 16;
+    double wrapSpacing = isMobile ? 6 : 8;
+    double wrapRunSpacing = isMobile ? 6 : 8;
+    int descriptionMaxLines = isMobile ? 3 : 4;
+
     return InkWell(
       onHover: (value) {
         setState(() {
@@ -38,12 +57,12 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
         });
       },
       onTap: () {},
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(borderRadius),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           color: AppColors.backgroundColor2,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
             color: _isHovered
                 ? AppColors.clipFillColor
@@ -73,11 +92,11 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
               // Gradient strip
               AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                width: _isHovered ? 6 : 5,
+                width: stripWidth,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(borderRadius),
+                    bottomLeft: Radius.circular(borderRadius),
                   ),
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -87,39 +106,62 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
                 ),
               ),
 
-              const SizedBox(width: 16),
+              SizedBox(width: spacing),
 
               // Body
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 26,
-                    horizontal: 20,
+                  padding: EdgeInsets.symmetric(
+                    vertical: verticalPadding,
+                    horizontal: horizontalPadding,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
+                      if (isMobile)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
                               widget.title,
                               style: _isHovered
                                   ? AppTheme.titleGreenText
                                   : AppTheme.titleText,
                               overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          _buildDateChip(
-                            "${widget.startDate} - ${widget.endDate}",
-                          ),
-                        ],
-                      ),
+                            SizedBox(height: wrapSpacing),
+                            _buildDateChip(
+                              "${widget.startDate} - ${widget.endDate}",
+                              dateIconSize,
+                            ),
+                          ],
+                        )
+                      else
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                widget.title,
+                                style: _isHovered
+                                    ? AppTheme.titleGreenText
+                                    : AppTheme.titleText,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: isTablet ? 2 : 1,
+                              ),
+                            ),
+                            SizedBox(width: spacing),
+                            _buildDateChip(
+                              "${widget.startDate} - ${widget.endDate}",
+                              dateIconSize,
+                            ),
+                          ],
+                        ),
 
-                      const SizedBox(height: 12),
+                      SizedBox(height: spacing),
 
                       // Company
                       Row(
@@ -129,35 +171,36 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
                                 ? Icons.school_outlined
                                 : Icons.work_outline,
                             color: AppColors.textColor,
-                            size: 18,
+                            size: iconSize,
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: wrapSpacing),
                           Expanded(
                             child: Text(
                               widget.supportiveTitle,
                               style: AppTheme.subtitleText,
                               overflow: TextOverflow.ellipsis,
+                              maxLines: isMobile ? 2 : 1,
                             ),
                           ),
                         ],
                       ),
 
-                      const SizedBox(height: 16),
+                      SizedBox(height: spacing),
 
                       // Description
                       Text(
                         widget.description,
                         style: AppTheme.bodyText,
-                        maxLines: 4,
+                        maxLines: descriptionMaxLines,
                         overflow: TextOverflow.ellipsis,
                       ),
 
-                      const SizedBox(height: 16),
+                      SizedBox(height: spacing),
 
                       // Skills/Tags
                       Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
+                        spacing: wrapSpacing,
+                        runSpacing: wrapRunSpacing,
                         children: [
                           for (String val in widget.clipsItems) appClips(val),
                         ],
@@ -167,7 +210,7 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
                 ),
               ),
 
-              const SizedBox(width: 16),
+              SizedBox(width: spacing),
             ],
           ),
         ),
@@ -175,10 +218,19 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
     );
   }
 
-  Widget _buildDateChip(String dateText) {
+  Widget _buildDateChip(String dateText, double iconSize) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    bool isMobile = screenWidth < 600;
+    double horizontalPadding = isMobile ? 10 : 12;
+    double verticalPadding = isMobile ? 5 : 6;
+    double fontSize = isMobile ? 11 : 12;
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
       decoration: BoxDecoration(
         color: _isHovered
             ? AppColors.clipFillColor.withOpacity(0.15)
@@ -191,10 +243,13 @@ class _AppContainerWidgetState extends State<AppContainerWidget> {
           Icon(
             Icons.calendar_today_outlined,
             color: AppColors.textColor,
-            size: 14,
+            size: iconSize,
           ),
           const SizedBox(width: 6),
-          Text(dateText, style: AppTheme.subtitleText.copyWith(fontSize: 12)),
+          Text(
+            dateText,
+            style: AppTheme.subtitleText.copyWith(fontSize: fontSize),
+          ),
         ],
       ),
     );
